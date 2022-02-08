@@ -10,3 +10,4 @@ edition = "2021"
 [dev-dependencies]
 dotenv = "0.15.0"
 postgres = "0.19.2"
+pin-project = "1.0.10"
