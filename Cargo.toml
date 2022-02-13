@@ -11,3 +11,4 @@ edition = "2021"
 dotenv = "0.15.0"
 postgres = "0.19.2"
 pin-project = "1.0.10"
+clap = { version = "3.0.13", features = ["derive"] }
