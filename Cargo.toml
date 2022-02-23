@@ -32,3 +32,5 @@ tokio = { version = "1", features = ["full"] }
 
 select = "0.5.0"
 url = "2.2.2"
+
+s2n-quic = "1"
