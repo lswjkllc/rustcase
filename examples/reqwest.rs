@@ -1,6 +1,7 @@
 use reqwest::{self, header, Client, Response};
 use std::collections::HashMap;
 
+#[allow(dead_code)]
 fn blocking_get(url: &str) -> Result<(), Box<dyn std::error::Error>> {
     let resp = reqwest::blocking::get(url)?.json::<HashMap<String, String>>()?;
     println!("{:#?}", resp);
