@@ -5,9 +5,6 @@ use dotenv;
 mod common;
 mod api;
 
-/// 定义自己的 Result
-pub type Result<T> = std::result::Result<T, common::AppError>;
-
 #[tokio::main]
 async fn main() {
     // 解析 .env 文件
@@ -17,7 +14,8 @@ async fn main() {
     let cfg = common::Config::from_env().expect("初始化配置失败");
 
     let app = Router::new()
-        .route("/", get(api::range_randnum));
+        .route("/randnum", get(api::range_randnum))
+        .route("/help", get(api::usage));
     
     let addr = &cfg.web.addr.parse().unwrap();
     // let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
