@@ -5,6 +5,9 @@ use dotenv;
 mod common;
 mod api;
 
+/// 定义自己的 Result
+pub type Result<T> = std::result::Result<T, common::AppError>;
+
 #[tokio::main]
 async fn main() {
     // 解析 .env 文件
