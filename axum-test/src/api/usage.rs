@@ -1,8 +1,12 @@
-use axum::Json;
+use std::sync::Arc;
 
-use crate::common::{Response, Result};
+use axum::{Json, extract::Extension};
 
-pub async fn usage<'a>() -> Result<Json<Response<Vec<&'a str>>>> {
+use crate::common::{Response, Result, Container};
+
+pub async fn usage<'a>(Extension(container): Extension<Arc<Container>>) -> Result<Json<Response<Vec<&'a str>>>> {
+    tracing::info!("{:?}", container.config);
+
     let data = r#"
         GET /help -- 接口简介
         GET /randnum -- 获取随机数标签

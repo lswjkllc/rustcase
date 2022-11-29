@@ -3,26 +3,26 @@
 use serde::Deserialize;
 
 /// 公共配置
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct CommonConfig {
     pub debug: bool,
 }
 
 /// Web 配置
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct WebConfig {
     pub addr: String,
 }
 
 /// Log 配置
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct LogConfig {
     pub path: String,
     pub level: String,
 }
 
 /// 应用配置
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct Config {
     pub common: CommonConfig,
     pub web: WebConfig,

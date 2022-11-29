@@ -1,6 +1,7 @@
 use std::net::SocketAddr;
+use std::sync::Arc;
 
-use axum::{routing::get, Router};
+use axum::{routing::get, Router, Extension};
 use tracing_subscriber::{fmt::{Layer}, layer::SubscriberExt, EnvFilter};
 use dotenv;
 
@@ -12,9 +13,11 @@ async fn main() {
     // 解析 .env 文件
     // dotenv::dotenv().ok();
     dotenv::from_path("axum-test/.env").ok();
-    
+
     // 初始化配置
     let cfg = common::Config::from_env().expect("初始化配置失败");
+    // 初始化共享变量
+    let container = Arc::new(common::Container { config: cfg.clone() });
 
     // 初始化日志
     let file_appender = tracing_appender::rolling::daily("", cfg.log.path);
@@ -39,7 +42,8 @@ async fn main() {
     // 路由设置
     let app = Router::new()
         .route("/randnum", get(api::range_randnum))
-        .route("/help", get(api::usage));
+        .route("/help", get(api::usage))
+        .layer(Extension(container));
     // 开启服务
     axum::Server::bind(addr)
         .serve(app.into_make_service())
