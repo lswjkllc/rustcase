@@ -12,3 +12,6 @@ serde = { version = "1", features = ["derive"] }
 tokio = { version = "1", features = ["full"] }
 dotenv = "0.15"
 config = "0.11"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
+tracing-appender = "0.2"
