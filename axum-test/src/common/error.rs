@@ -1,6 +1,4 @@
 
-use std::error;
-
 use axum::{Json, response::IntoResponse};
 
 use super::response::Response;
