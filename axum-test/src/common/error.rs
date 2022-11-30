@@ -6,6 +6,7 @@ use super::response::Response;
 /// 错误类型
 pub enum AppErrorType {
     /// 无错误
+    #[allow(unused)]
     Ok,
     /// 数据库错误
     DbType,
@@ -32,6 +33,7 @@ impl AppError {
         }
     }
 
+    #[allow(unused)]
     fn from_err(err: impl ToString, error_type: AppErrorType) -> Self {
         Self {
             message: None,
@@ -40,6 +42,7 @@ impl AppError {
         }
     }
 
+    #[allow(unused)]
     fn from_str(msg: &str, error_type: AppErrorType) -> Self {
         Self {
             message: Some(msg.to_string()),
@@ -49,11 +52,13 @@ impl AppError {
     }
 
     /// 数据库错误
+    #[allow(unused)]
     pub fn db_err(err: impl ToString) -> Self {
         Self::from_err(err, AppErrorType::DbType)
     }
 
     /// 未找到
+    #[allow(unused)]
     pub fn not_found() -> Self {
         Self::from_str("不存在的记录", AppErrorType::NotFound)
     }
