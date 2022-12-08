@@ -33,6 +33,20 @@ impl<T> List<T> {
     }
 }
 
+/// 实现 Drop
+impl<T> Drop for List<T> {
+    fn drop(&mut self) {
+        let mut head = self.head.take();
+        while let Some(node) = head {
+            if let Ok(mut node) = Rc::try_unwrap(node) {
+                head = node.next.take();
+            } else {
+                break;
+            }
+        }
+    }
+}
+
 /// 迭代器相关实现
 
 // iter
@@ -82,6 +96,15 @@ mod test {
         // Make sure empty tail works
         let list = list.tail();
         assert_eq!(list.head(), None);
+    }
+
+    #[test]
+    fn long_list() {
+        let mut list = List::new();
+        for i in 0..100000 {
+            list = list.prepend(i);
+        }
+        // drop(list);
     }
 
     #[test]
