@@ -8,6 +8,7 @@ edition = "2021"
 members = [
     "axum-test",
     "lists",
+    "grpc",
 ]
 
 [build-dependencies]
