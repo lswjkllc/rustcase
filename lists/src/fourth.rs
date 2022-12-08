@@ -1,5 +1,5 @@
 use std::rc::Rc;
-use std::cell::{RefCell};
+use std::cell::{Ref, RefCell};
 
 /// 双端链表定义
 pub struct List<T> {
@@ -40,6 +40,12 @@ impl<T> List<T> {
             }
 
             Rc::try_unwrap(old_head).ok().unwrap().into_inner().elem
+        })
+    }
+
+    pub fn peek_front(&self) -> Option<Ref<T>> {
+        self.head.as_ref().map(|head| {
+            Ref::map(head.borrow(), |node| &node.elem)
         })
     }
 }
@@ -109,5 +115,14 @@ mod test {
             list.push_front(i);
         }
         // drop(list);
+    }
+
+    #[test]
+    fn peek() {
+        let mut list = List::new();
+        assert!(list.peek_front().is_none());
+        list.push_front(1); list.push_front(2); list.push_front(3);
+
+        assert_eq!(*list.peek_front().unwrap(), 3);
     }
 }
