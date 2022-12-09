@@ -11,9 +11,6 @@ members = [
     "grpc",
 ]
 
-[build-dependencies]
-prost-build = "0.9"
-
 [dependencies]
 anyhow = "1"
 bytes = "1"
@@ -23,6 +20,7 @@ serde = { version = "1",features = ["derive"] }
 serde_json = "1"
 
 itertools = "0.8.0"
+clap = { version = "4.0.29", features = ["derive"] }
 
 [dev-dependencies]
 dotenv = "0.15.0"
@@ -30,8 +28,6 @@ dotenv = "0.15.0"
 postgres = "0.19.2"
 
 pin-project = "1.0.10"
-
-clap = { version = "3.0.13", features = ["derive"] }
 
 chrono = "0.4"
 
