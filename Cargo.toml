@@ -11,6 +11,7 @@ members = [
     "grpc",
     "httpie",
     "database",
+    "minigrep",
 ]
 
 [dependencies]
