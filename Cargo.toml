@@ -10,6 +10,7 @@ members = [
     "lists",
     "grpc",
     "httpie",
+    "database",
 ]
 
 [dependencies]
