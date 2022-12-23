@@ -12,6 +12,7 @@ members = [
     "httpie",
     "database",
     "minigrep",
+    "oop",
 ]
 
 [dependencies]
