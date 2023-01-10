@@ -1,6 +1,7 @@
 use std::fmt;
 
 // 冒泡排序
+#[allow(dead_code)]
 pub fn bubble_sort<T: Ord + fmt::Debug>(arr: &mut [T]) {
     if arr.len() <= 1 {
         return;
@@ -17,6 +18,7 @@ pub fn bubble_sort<T: Ord + fmt::Debug>(arr: &mut [T]) {
 }
 
 // 选择排序
+#[allow(dead_code)]
 pub fn select_sort<T: Ord + fmt::Debug>(arr: &mut [T]) {
     if arr.len() <= 1 {
         return;
@@ -35,6 +37,7 @@ pub fn select_sort<T: Ord + fmt::Debug>(arr: &mut [T]) {
 }
 
 // 插入排序
+#[allow(dead_code)]
 pub fn insert_sort<T: Ord + Clone + fmt::Debug>(arr: &mut [T]) -> Vec<T> {
     let mut sorted_arr = Vec::with_capacity(arr.len());
 
@@ -53,6 +56,7 @@ pub fn insert_sort<T: Ord + Clone + fmt::Debug>(arr: &mut [T]) -> Vec<T> {
 }
 
 // 归并排序
+#[allow(dead_code)]
 pub fn merge_sort<T: Ord + fmt::Debug>(mut arr: Vec<T>) -> Vec<T> {
     if arr.len() <= 1 {
         return arr;
@@ -110,6 +114,7 @@ fn merge<T: Ord + fmt::Debug>(left_arr: Vec<T>, right_arr: Vec<T>) -> Vec<T> {
 }
 
 // 快速排序
+#[allow(dead_code)]
 pub fn quick_sort<T: Ord + fmt::Debug>(arr: &mut [T]) {
     if arr.len() <= 1 {
         return;
